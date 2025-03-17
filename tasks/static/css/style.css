@@ -1,3 +1,85 @@
-h2{
+body{
+    margin: 0;
+    padding: 0;
+   
+}
+
+/*Navbar*/
+.navbar{
+    border-bottom: 1px solid black !important;
+    margin-bottom: 20px !important;
+}
+
+.navbar-nav{
+    margin: auto;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link{
+    color: black;
+    letter-spacing: 2px;
+}
+
+/*Adicionar Tarefas*/
+.add-div{
+    background-color: rgb(75, 75, 221);
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.fa.fa-plus{
+    color: white;
+}
+
+/*Main*/
+.item{
+    border-bottom: 1px dotted black;
+    height: 2em;
+    font-size: 30px;
+    margin-top: 1em;
+}
+
+.list-div{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.barra{
+    margin-top: 1em;
+}
+
+.fa.fa-trash,.fa.fa-edit{
+    cursor: pointer;
+    font-size: 30px;
+    margin: 5px;
+}
+
+.icones{
+    text-align: end;
+}
+
+.fa.fa-trash{
     color: red;
+}
+.fa.fa-edit{
+    color: green;
+}
+
+.input-group-btn{
+    border: 1px solid rgba(0, 0, 0, 0.206);
+    border-radius:5px ;
+}
+
+
+
+footer{
+    background-color: #333;
+    border-top: 2px solid black;
+    color: white;
+    text-align: center;
 }
