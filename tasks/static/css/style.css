@@ -44,6 +44,11 @@ body{
     margin-top: 1em;
 }
 
+.link{
+    text-decoration: none;
+
+}
+
 .list-div{
     margin-left: 10%;
     margin-right: 10%;

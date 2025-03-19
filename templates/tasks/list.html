@@ -20,33 +20,19 @@
         </div>
     </div>
 
+    {% for tarefa in tarefas %}
     <div class="row item">
         <div class="col-sm-10">
-            <span>Título da Tarefa</span>
+            <span><a class="link" href="/task/{{tarefa.id}}">{{tarefa.titulo}}</a></span>
         </div>
         <div class="col-sm-2 icones">
             <span><i class="fa fa-trash"></i></span>
             <span><i class="fa fa-edit"></i></span>
         </div>
     </div>
-    <div class="row item">
-        <div class="col-sm-10">
-            <span>Título da Tarefa</span>
-        </div>
-        <div class="col-sm-2 icones">
-            <span><i class="fa fa-trash"></i></span>
-            <span><i class="fa fa-edit"></i></span>
-        </div>
-    </div>
-    <div class="row item">
-        <div class="col-sm-10">
-            <span>Título da Tarefa</span>
-        </div>
-        <div class="col-sm-2 icones">
-            <span><i class="fa fa-trash"></i></span>
-            <span><i class="fa fa-edit"></i></span>
-        </div>
-    </div>
+    {% endfor %}
+
+
 
 </div>
 
