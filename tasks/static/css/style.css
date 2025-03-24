@@ -28,8 +28,12 @@ body{
     background-color: rgb(75, 75, 221);
     color: white;
     cursor: pointer;
-    padding: 8px;
+    padding: 5px;
     border-radius: 5px;
+}
+
+#add-button{
+    text-decoration: none;
 }
 
 .fa.fa-plus{
