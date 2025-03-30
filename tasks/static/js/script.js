@@ -10,3 +10,8 @@ document.querySelectorAll(".delete-btn").forEach(btn => {
         }
     });
 });
+
+//Função de Pesquisar
+document.getElementById("search-btn").addEventListener("click", function(){
+    document.getElementById("search-form").onsubmit();
+}, false );

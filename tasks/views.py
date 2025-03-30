@@ -6,13 +6,16 @@ from django.contrib import messages
 
 def taskList(request):
     tarefas_list = Task.objects.all().order_by('-created_at')
-
     paginator = Paginator(tarefas_list, 3)
-
     page = request.GET.get('page')
 
-    tarefas = paginator.get_page(page)
+    search = request.GET.get('search')
 
+    if search:
+        tarefas = Task.objects.filter(titulo__icontains=search)
+
+    else:
+        tarefas = paginator.get_page(page)
 
 
     return render(request, 'tasks/list.html', {'tarefas':tarefas})
