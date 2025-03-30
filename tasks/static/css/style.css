@@ -98,8 +98,25 @@ footer{
 /* Messages */
 ul.messages {
     padding: 0;
+    list-style: none;
 }
 
 ul.messages li {
     list-style: none;
+}
+
+/*Paginação*/
+.pagination{
+    margin-bottom: 20px !important;
+}
+
+.step-links{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ster-links .current{
+    margin-left: 5px;
+    margin-right: 5px;
 }

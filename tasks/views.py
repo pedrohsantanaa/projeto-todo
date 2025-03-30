@@ -1,11 +1,20 @@
 from django.shortcuts import get_object_or_404, redirect, render
-
+from django.core.paginator import Paginator
 from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
 
 def taskList(request):
-    tarefas = Task.objects.all().order_by('-created_at')
+    tarefas_list = Task.objects.all().order_by('-created_at')
+
+    paginator = Paginator(tarefas_list, 3)
+
+    page = request.GET.get('page')
+
+    tarefas = paginator.get_page(page)
+
+
+
     return render(request, 'tasks/list.html', {'tarefas':tarefas})
 
 def taskView(request, id):
