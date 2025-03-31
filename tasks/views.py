@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
 
+@login_required
 def taskList(request):
     tarefas_list = Task.objects.all().order_by('-created_at')
     paginator = Paginator(tarefas_list, 3)
@@ -20,10 +22,12 @@ def taskList(request):
 
     return render(request, 'tasks/list.html', {'tarefas':tarefas})
 
+@login_required
 def taskView(request, id):
     tarefa = get_object_or_404(Task, pk=id)
     return render(request, 'tasks/task.html', {'tarefa':tarefa})
 
+@login_required
 def newTask(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -38,6 +42,7 @@ def newTask(request):
         form = TaskForm()
         return render(request, 'tasks/addtask.html', {'form':form})
 
+@login_required
 def editTask(request, id):
     tarefa = get_object_or_404(Task, pk=id)
     form = TaskForm(instance=tarefa)
@@ -53,6 +58,7 @@ def editTask(request, id):
     else:
         return render(request, 'tasks/edittask.html', {'form':form, 'tarefa':tarefa})
 
+@login_required
 def deleteTask(request, id):
     tarefa = get_object_or_404(Task, pk=id)
     tarefa.delete()
