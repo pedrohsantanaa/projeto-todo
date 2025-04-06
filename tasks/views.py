@@ -4,23 +4,34 @@ from django.contrib.auth.decorators import login_required
 from .models import Task
 from .forms import TaskForm
 from django.contrib import messages
+import datetime
 
 @login_required
 def taskList(request):
-    tarefas_list = Task.objects.all().order_by('-created_at')
+    tarefas_list = Task.objects.all().order_by('-created_at').filter(user=request.user)
     paginator = Paginator(tarefas_list, 3)
     page = request.GET.get('page')
 
     search = request.GET.get('search')
+    filter = request.GET.get('filter')
 
+    taskDoneRecently = Task.objects.filter(status='realizado',
+    update_at__gt=datetime.datetime.now() - datetime.timedelta(days=30),
+    user=request.user).count()
+
+    taskDone = Task.objects.filter(status='realizado', user = request.user).count()
+    taskDoing = Task.objects.filter(status='andamento', user = request.user).count()
     if search:
-        tarefas = Task.objects.filter(titulo__icontains=search)
+        tarefas = Task.objects.filter(titulo__icontains=search, user = request.user)
 
+    elif filter:
+        tarefas = Task.objects.filter(status=filter, user = request.user)
+ 
     else:
         tarefas = paginator.get_page(page)
 
 
-    return render(request, 'tasks/list.html', {'tarefas':tarefas})
+    return render(request, 'tasks/list.html', {'tarefas':tarefas, 'taskDoneRecently':taskDoneRecently, 'taskDone':taskDone, 'taskDoing':taskDoing})
 
 @login_required
 def taskView(request, id):
@@ -35,6 +46,8 @@ def newTask(request):
         if form.is_valid():
             task = form.save(commit=False)
             task.status = 'andamento'
+
+            task.user = request.user
             task.save()
             return redirect('/')
 
@@ -64,4 +77,17 @@ def deleteTask(request, id):
     tarefa.delete()
 
     messages.info(request, 'Tarefa deletada com sucesso!!!')
+    return redirect('/')
+
+@login_required
+def changeStatus(request, id):
+    tarefa = get_object_or_404(Task, pk=id)
+
+    if(tarefa.status == 'andamento'):
+        tarefa.status = 'realizado'
+    else:
+        tarefa.status = 'andamento'
+    
+    tarefa.save()
+
     return redirect('/')

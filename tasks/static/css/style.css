@@ -42,12 +42,23 @@ body{
     color: white;
 }
 
+/*Filtros*/
+.filter-div{
+    margin-top: 1em !important;
+    align-items: center;
+    
+}
+
 /*Main*/
 .item{
     border-bottom: 1px dotted black;
-    height: 2em;
+    height: 3em;
     font-size: 30px;
     margin-top: 1em;
+}
+
+.item.done{
+    background-color: #ccc !important;
 }
 
 .link{
@@ -64,7 +75,7 @@ body{
     margin-top: 1em;
 }
 
-.fa.fa-trash,.fa.fa-edit{
+.fa.fa-trash,.fa.fa-edit, .fa.fa-check{
     cursor: pointer;
     font-size: 30px;
     margin: 5px;
@@ -73,6 +84,14 @@ body{
 .icones{
     text-align: end;
 }
+
+.fa.fa-check{
+    color: #ccc;
+}
+.done .fa.fa-check{
+    color: #3476e2;
+}
+
 
 .fa.fa-trash{
     color: red;
@@ -125,3 +144,52 @@ ul.messages li {
 .auth-card{
     margin-bottom: 30px !important;
 }
+
+.change-form-p{
+    margin-top: 30px !important;
+    text-align: center !important;
+}
+
+/*Dashboard*/
+.dashboard-box h4{
+    font-size: 20px;
+}
+
+.dashboard-box span{
+    font-size: 40px;
+}
+
+.dashboard-box{
+    background-color: #dfdfdf;
+    box-sizing: border-box;
+    padding: 2em;
+    color: #fff;
+    text-align: center;
+    margin-left: 1em;
+    margin-right: 1em;      
+
+}
+
+.dashboard{
+    justify-content: center ;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#dashboard-lastdays{
+    background-color: #3476e2;
+}
+
+#dashboard-done{
+    background-color: #13c43f;
+}
+
+#dashboard-doing{
+    background-color: #db1e47;
+}
+
+
+
+
+

@@ -5,6 +5,24 @@
 {% block content %}
 <div class="list-div ">
     <h1>Lista de Tarefas</h1>
+
+    <div class="container-fluid row dashboard">
+        <div class="col-sm-3 dashboard-box" id="dashboard-lastdays">
+            <h4>Finalizados nos últimos 30 dias</h4>
+            <span>{{taskDoneRecently}}</span>
+        </div>
+        <div class="col-sm-3 dashboard-box" id="dashboard-done">
+            <h4>Tarefas finalizadas</h4>
+            <span>{{taskDone}}</span>
+        </div>
+        <div class="col-sm-3 dashboard-box" id="dashboard-doing">
+            <h4>Tarefas para fazer</h4>
+            <span>{{taskDoing}}</span>
+        </div>
+
+    </div>
+
+
     <div class="row barra">
         <div class="col-sm-2">
             <a id="add-button" href="newtask/">
@@ -27,6 +45,21 @@
             </form>
         </div>
 
+        <div class="col-sm-6 filter-div row">
+            <div class="col-sm-2">
+                <span>Filtrar por:</span>
+            </div>
+            <div class="col-sm-4">
+                <select name="filter" id="filter" class="form-control">
+                    <option value="">Escolha uma opção:</option>
+                    <option value="andamento">Em Andamento</option>
+                    <option value="realizado">Concluidas</option>
+                </select>
+            </div>
+            
+           
+        </div>
+
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -38,11 +71,16 @@
     </div>
 
     {% for tarefa in tarefas %}
-    <div class="row item">
+    {% if tarefa.status == 'andamento'%}
+        <div class="row item">
+    {% else %}
+        <div class="row item done">
+    {% endif %}        
         <div class="col-sm-10">
             <span><a class="link" href="/task/{{tarefa.id}}">{{tarefa.titulo}}</a></span>
         </div>
         <div class="col-sm-2 icones">
+            <a href="changestatus/{{tarefa.id}}"><span><i class="fa fa-check"></i></span></a>
             <a href="edit/{{tarefa.id}}"><span><i class="fa fa-edit"></i></span></a>
             <a href="delete/{{tarefa.id}}" class="delete-btn"><span><i class="fa fa-trash"></i></span></a>
 

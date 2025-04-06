@@ -15,3 +15,10 @@ document.querySelectorAll(".delete-btn").forEach(btn => {
 document.getElementById("search-btn").addEventListener("click", function(){
     document.getElementById("search-form").onsubmit();
 }, false );
+
+//Função para filtrar a escolha
+document.getElementById("filter").addEventListener("change", function() {
+    const filtro = this.value;
+    const novaURL = window.location.origin + window.location.pathname + '?filter=' + filtro;
+    window.location.href = novaURL;
+});
