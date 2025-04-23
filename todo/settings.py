@@ -87,10 +87,16 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600), 
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'todo_db_h2f8',
+        'USER': 'admin',
+        'PASSWORD': 'sroo0giu1eBZxPO710yzuXLwZB4gZObI',
+        'HOST': 'dpg-d04kges9c44c739o46o0-a.oregon-postgres.render.com',
+        'PORT': '5432'
+    
+    }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
