@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'todo_db_h2f8',
         'USER': 'admin',
         'PASSWORD': 'sroo0giu1eBZxPO710yzuXLwZB4gZObI',
-        'HOST': 'dpg-d04kges9c44c739o46o0-a.oregon-postgres.render.com/todo_db_h2f8',
+        'HOST': 'dpg-d04kges9c44c739o46o0-a.oregon-postgres.render.com',
         'PORT': '5432'
     }
 }
